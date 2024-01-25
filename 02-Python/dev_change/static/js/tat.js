@@ -1,1 +1,0 @@
-console.log('tat is loading...\nThis is a multi-line string.\n')
