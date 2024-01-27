@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'yourapp'
+    'newapp',
 ]
 
 MIDDLEWARE = [
@@ -51,11 +51,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'week2.urls'
-
+import os
+print(BASE_DIR)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR,'week2/templates','newapp/temp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,6 +1,7 @@
+# week2/newapp/apps.py
 from django.apps import AppConfig
 
-
-class YourappConfig(AppConfig):
+class NewappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'yourapp'
+    name = 'newapp'
+

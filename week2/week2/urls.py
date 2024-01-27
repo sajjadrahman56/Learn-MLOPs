@@ -17,9 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import viwes
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', viwes.body),
+    # path('', viwes.homepage34),
+    path('', include('newapp.urls')),
+ 
+ 
+   # week2/urls.py
+ 
 ]
 
