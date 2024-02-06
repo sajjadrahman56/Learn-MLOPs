@@ -5,5 +5,6 @@ from newapp import views
 urlpatterns = [
     # path('yo/', views.homnew1 ),
     path('ab/', views.homnew1 ),
+    path('ab1/', views.homnew11 ),
  
 ]
