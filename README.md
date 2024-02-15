@@ -15,7 +15,7 @@ This repository contains various resources related to different branches. Below 
 
 - [2] [**machine-learning**](https://github.com/your-username/your-repository/tree/machine-learning): This branch contains code related to machine learning models.
    - You'll find Jupyter notebooks, Python scripts, and data files used for training and evaluating machine learning models.
-https://github.com/sajjadrahman56/Learn-MLOPs
+
 ## 🚀 Getting Started
 
 To get started, clone this repository to your local machine 
