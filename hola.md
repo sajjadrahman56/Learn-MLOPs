@@ -38,7 +38,7 @@ description: >
 
 আরও তথ্যের জন্য, কুবারনেটিস [প্যাচ রিলিজ](/bn/releases/patch-releases/) পৃষ্ঠাটি দেখুন।
 
-## সমর্থিত সংস্করণ স্ক্যু(skew)
+## সংস্করণ সমর্থিত স্ক্যু(skew)
 
 ### কুবে-এপিসার্ভার (kube-apiserver)
 
@@ -67,10 +67,10 @@ If version skew exists between `kube-apiserver` instances in an HA cluster, this
 
 উদাহরণ:
 
-* `kube-apiserver` ইন্সট্যান্সগুলিতে **{{< skew currentVersion >}}** এবং **{{< skew currentVersionAddMinor -1 >}}**  আছে 
-* `kubelet` সমর্থিত **{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**,
-  এবং **{{< skew currentVersionAddMinor -3 >}}** (**{{< skew currentVersion >}}** সমর্থিত নয় কারণ এটি
-  নতুন হবে `kube-apiserver` সংস্করণে উদাহরণের চেয়ে **{{< skew currentVersionAddMinor -1 >}}**)
+* `kube-apiserver` ইন্সট্যান্সগুলিতে **{{< skew currentVersion >}}** এবং **{{< skew currentVersionAddMinor -1 >}}**  আছে
+* `kubelet` **{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**,
+  এবং **{{< skew currentVersionAddMinor -3 >}}** এ সমর্থিত (**{{< skew currentVersion >}}** সমর্থিত নয় কারণ
+  এটি সংস্করণ **{{< skew currentVersionAddMinor -1 >}}** -এ `kube-apiserver` ইন্সট্যান্সের চেয়ে নতুন হবে)
 
 ### kube-proxy
 
@@ -85,7 +85,7 @@ If version skew exists between `kube-apiserver` instances in an HA cluster, this
 
 * `kube-apiserver` **{{< skew currentVersion >}}** এ আছে 
 * `kube-proxy` তে **{{< skew currentVersion >}}**, **{{< skew currentVersionAddMinor -1 >}}**,
-  **{{< skew currentVersionAddMinor -2 >}}**, এবং **{{< skew currentVersionAddMinor -3 >}}** সমর্থিত আছে
+  **{{< skew currentVersionAddMinor -2 >}}**, এবং **{{< skew currentVersionAddMinor -3 >}}** এ সমর্থিত
 
 {{< note >}}
 If version skew exists between `kube-apiserver` instances in an HA cluster, this narrows the allowed `kube-proxy` versions.
@@ -94,9 +94,9 @@ If version skew exists between `kube-apiserver` instances in an HA cluster, this
 উদাহরণ:
 
 * `kube-apiserver` ইন্সট্যান্সে **{{< skew currentVersion >}}** এবং **{{< skew currentVersionAddMinor -1 >}}** আছে
-* `kube-proxy` সমর্থিত **{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**,
-  এবং **{{< skew currentVersionAddMinor -3 >}}** আছে (**{{< skew currentVersion >}}** সমর্থিত নয় কারণ এটি 
-  **{{< skew currentVersionAddMinor -1 >}}** সংস্করণে নতুন হবে `kube-apiserver` ইন্সট্যান্সের চেয়ে নতুন হবে )
+* `kube-proxy` **{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**,
+  এবং **{{< skew currentVersionAddMinor -3 >}}** এ সমর্থিত (**{{< skew currentVersion >}}** সমর্থিত নয় কারণ
+  এটি সংস্করণ **{{< skew currentVersionAddMinor -1 >}}** -এ `kube-apiserver` ইন্সট্যান্সের চেয়ে নতুন হবে)
 
 ### কুবে-কন্ট্রোলার-ম্যানেজার, কুবে-শিডিউলার, এবং ক্লাউড-কন্ট্রোলার-ম্যানেজার (kube-controller-manager, kube-scheduler, and cloud-controller-manager)
 
@@ -145,7 +145,7 @@ If version skew exists between `kube-apiserver` instances in an HA cluster, this
 * `kubectl` সমর্থিত আছে **{{< skew currentVersion >}}** এবং **{{< skew currentVersionAddMinor -1 >}}**
   (অন্যান্য সংস্করণগুলি `kube-apiserver` উপাদানগুলির একটি থেকে একের বেশি ছোটখাট সংস্করণ হবে )
 
-## সমর্থিত উপাদান আপগ্রেড অর্ডার
+## উপাদান সমর্থিত আপগ্রেড অর্ডার
 
 উপাদানগুলির মধ্যে সমর্থিত সংস্করণের স্কুটির প্রভাব রয়েছে যে ক্রম 
 অনুসারে উপাদানগুলিকে আপগ্রেড করতে হবে৷ এই বিভাগটি 
@@ -173,18 +173,18 @@ If version skew exists between `kube-apiserver` instances in an HA cluster, this
 * একটি HA ক্লাস্টারে, সমস্ত `kube-apiserver` ইন্সট্যান্সগুলি **{{< skew currentVersionAddMinor -1 >}}** বা
   **{{< skew currentVersion >}}** এ থাকে (এটি প্রাচীনতম এবং নতুন `kube-apiserver` ইন্সট্যান্সের মধ্যে সর্বাধিক 1 টি ছোট সংস্করণ নিশ্চিত করে )
 * এই সার্ভারের সাথে যোগাযোগকারী `কুব-কন্ট্রোলার-ম্যানেজার`, `কুব-শিডিউলার` এবং `ক্লাউড-কন্ট্রোলার-ম্যানেজার`
-  দৃষ্টান্তগুলি **{{< skew currentVersionAddMinor -1 >}}** সংস্করণে রয়েছে
+  ইনস্ট্যান্সগুলি **{{< skew currentVersionAddMinor -1 >}}** সংস্করণে রয়েছে
   (এটি নিশ্চিত করে যে তারা বিদ্যমান API সার্ভার সংস্করণের চেয়ে নতুন নয় ,এবং এর মধ্যে রয়েছে নতুন API সার্ভার সংস্করণের 1টি ছোট সংস্করণ)
-* সমস্ত নোডের `kubelet` দৃষ্টান্তগুলি **{{< skew currentVersionAddMinor -1 >}}** or **{{< skew currentVersionAddMinor -2 >}}** সংস্করণে রয়েছে
+* সমস্ত নোডের `kubelet` ইনস্ট্যান্সগুলি **{{< skew currentVersionAddMinor -1 >}}** or **{{< skew currentVersionAddMinor -2 >}}** সংস্করণে রয়েছে
   (এটি নিশ্চিত করে যে তারা বিদ্যমান API সার্ভার সংস্করণের চেয়ে নতুন নয় ,এবং নতুন API সার্ভার সংস্করণের 2টি ছোট সংস্করণের মধ্যে রয়েছে)
 * নিবন্ধিত ভর্তির ওয়েবহুকগুলি নতুন `কুবে-এপিসার্ভার` ইনস্ট্যান্স যে ডেটা পাঠাবে তা পরিচালনা করতে সক্ষম:
-  - `ValidatingWebhookConfiguration` এবং `MutatingWebhookConfiguration` অবজেক্ট অন্তর্ভুক্ত করার জন্য আপডেট করা হয়েছে
+  * `ValidatingWebhookConfiguration` এবং `MutatingWebhookConfiguration` অবজেক্ট অন্তর্ভুক্ত করার জন্য আপডেট করা হয়েছে
     REST রিসোর্সের যেকোন নতুন সংস্করণ **{{< skew currentVersion >}}** এ যোগ করা হয়েছে 
     (বা ব্যবহার করুন [`matchPolicy: Equivalent` option](/bn/docs/reference/access-authn-authz/extensible-admission-controllers/#matching-requests-matchpolicy) v1.15+ এ সহজলভ্য)
-  - The webhooks are able to handle any new versions of REST resources that will be sent to them,
-    and any new fields added to existing versions in **{{< skew currentVersion >}}**
+  * ওয়েবহুকগুলি REST সংস্থানগুলির যে কোনও নতুন সংস্করণ পরিচালনা করতে সক্ষম যা তাদের কাছে পাঠানো হবে,
+    এবং **{{< skew currentVersion >}}**-এ বিদ্যমান সংস্করণগুলিতে যে কোনও নতুন ক্ষেত্র যুক্ত করা হবে।
 
-Upgrade `kube-apiserver` to **{{< skew currentVersion >}}**
+`kube-apiserver`  আপগ্রেড করুন **{{< skew currentVersion >}}**
 
 {{< note >}}
 Project policies for [API deprecation](/docs/reference/using-api/deprecation-policy/) and
@@ -192,28 +192,28 @@ Project policies for [API deprecation](/docs/reference/using-api/deprecation-pol
 require `kube-apiserver` to not skip minor versions when upgrading, even in single-instance clusters.
 {{< /note >}}
 
-### kube-controller-manager, kube-scheduler, and cloud-controller-manager
+### কুবে-কন্ট্রোলার-ম্যানেজার, কুবে-শিডিউলার, এবং ক্লাউড-কন্ট্রোলার-ম্যানেজার(kube-controller-manager, kube-scheduler, and cloud-controller-manager)
 
-Pre-requisites:
+পূর্বশর্তসমূহ:
 
-- The `kube-apiserver` instances these components communicate with are at **{{< skew currentVersion >}}**
-  (in HA clusters in which these control plane components can communicate with any `kube-apiserver`
-  instance in the cluster, all `kube-apiserver` instances must be upgraded before upgrading these components)
+* `kube-apiserver` ইনস্ট্যান্সগুলির সাথে এই উপাদানগুলি **{{< skew currentVersion >}}** -এ যোগাযোগ করে
+  (HA ক্লাস্টারে যেখানে এই কন্ট্রোল প্লেন উপাদানগুলি ক্লাস্টারের যেকোনো `kube-apiserver` ইনস্ট্যান্সের সাথে যোগাযোগ
+  করতে পারে, এই উপাদানগুলি আপগ্রেড করার আগে সমস্ত `kube-apiserver` ইনস্ট্যান্সগুলি আপগ্রেড করা আবশ্যক)
 
-Upgrade `kube-controller-manager`, `kube-scheduler`, and
-`cloud-controller-manager` to **{{< skew currentVersion >}}**. There is no
-required upgrade order between `kube-controller-manager`, `kube-scheduler`, and
-`cloud-controller-manager`. You can upgrade these components in any order, or
-even simultaneously.
+**{{< skew currentVersion >}}** থেকে  আপগ্রেড করুন  `kube-controller-manager`, `kube-scheduler`, এবং
+`cloud-controller-manager` । `kube-controller-manager`, `kube-scheduler`, 
+`cloud-controller-manager`  এর মধ্যে কোনো প্রয়োজনীয় আপগ্রেড অর্ডার নেই।
+আপনি যে কোনো ক্রমে এই উপাদান আপগ্রেড করতে পারেন, বা
+এমনকি একই সাথে।
 
 ### kubelet
 
-Pre-requisites:
+পূর্বশর্তসমূহ:
 
-- The `kube-apiserver` instances the `kubelet` communicates with are at **{{< skew currentVersion >}}**
+* যে `kube-apiserver`  দৃইনস্ট্যান্স  `kubelet` এর সাথে যোগাযোগ করে তা **{{< skew currentVersion >}}**-এ।
 
-Optionally upgrade `kubelet` instances to **{{< skew currentVersion >}}** (or they can be left at
-**{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**, or **{{< skew currentVersionAddMinor -3 >}}**)
+ঐচ্ছিকভাবে `kubelet` ইনস্ট্যান্সগুলিকে **{{< skew currentVersion >}}** তে আপগ্রেড করুন (অথবা সেগুলি
+**{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**, বা **{{< skew currentVersionAddMinor -3 >}}** এ ছেড়ে দেওয়া যেতে পারে)
 
 {{< note >}}
 Before performing a minor version `kubelet` upgrade, [drain](/docs/tasks/administer-cluster/safely-drain-node/) pods from that node.
@@ -227,13 +227,13 @@ Running a cluster with `kubelet` instances that are persistently three minor ver
 
 ### kube-proxy
 
-Pre-requisites:
+পূর্বশর্তসমূহ:
 
-- The `kube-apiserver` instances `kube-proxy` communicates with are at **{{< skew currentVersion >}}**
+* যে `kube-apiserver`  ইনস্ট্যান্স `kube-proxy` এর সাথে যোগাযোগ করে তা **{{< skew currentVersion >}}**-এ।
 
-Optionally upgrade `kube-proxy` instances to **{{< skew currentVersion >}}**
-(or they can be left at **{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**,
-or **{{< skew currentVersionAddMinor -3 >}}**)
+ঐচ্ছিকভাবে `kube-proxy` ইনস্ট্যান্সগুলিকে **{{< skew currentVersion >}}** তে আপগ্রেড করুন
+(অথবা সেগুলি **{{< skew currentVersionAddMinor -1 >}}**, **{{< skew currentVersionAddMinor -2 >}}**,
+বা **{{< skew currentVersionAddMinor -3 >}}** এ ছেড়ে দেওয়া যেতে পারে)
 
 {{< warning >}}
 Running a cluster with `kube-proxy` instances that are persistently three minor versions behind
